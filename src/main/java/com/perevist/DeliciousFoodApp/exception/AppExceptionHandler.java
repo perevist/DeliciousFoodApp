@@ -21,6 +21,7 @@ public class AppExceptionHandler {
                 httpStatus = HttpStatus.CONFLICT;
                 break;
             case VERIFICATION_TOKEN_IS_NOT_VALID:
+            case USER_DOES_NOT_EXIST:
                 httpStatus = HttpStatus.BAD_REQUEST;
                 break;
         }
