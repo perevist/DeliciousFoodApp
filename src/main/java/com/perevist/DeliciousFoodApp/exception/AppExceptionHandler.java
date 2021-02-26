@@ -16,7 +16,12 @@ public class AppExceptionHandler {
 
         switch (error) {
             case MAIL_CAN_NOT_BE_SENT:
+            case USERNAME_ALREADY_EXISTS:
+            case EMAIL_ALREADY_EXISTS:
                 httpStatus = HttpStatus.CONFLICT;
+                break;
+            case VERIFICATION_TOKEN_IS_NOT_VALID:
+                httpStatus = HttpStatus.BAD_REQUEST;
                 break;
         }
 

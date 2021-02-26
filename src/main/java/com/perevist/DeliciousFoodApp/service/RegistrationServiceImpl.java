@@ -38,6 +38,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void registerUser(RegistrationRequest registrationRequest) {
+        validateIfUsernameAndEmailExist(registrationRequest.getUsername(), registrationRequest.getEmail());
         User user = createUserFromRegistrationRequest(registrationRequest);
 
         userRepository.save(user);
@@ -58,6 +59,15 @@ public class RegistrationServiceImpl implements RegistrationService {
         user.setAuthorities(Set.of(authority));
         user.setEnabled(false);
         return user;
+    }
+
+    private void validateIfUsernameAndEmailExist(String username, String email) {
+        if(userRepository.existsByUsername(username)) {
+            throw new DeliciousFoodAppException(Error.USERNAME_ALREADY_EXISTS);
+        }
+        if(userRepository.existsByEmail(email)) {
+            throw new DeliciousFoodAppException(Error.EMAIL_ALREADY_EXISTS);
+        }
     }
 
     private String generateVerificationToken(User user) {

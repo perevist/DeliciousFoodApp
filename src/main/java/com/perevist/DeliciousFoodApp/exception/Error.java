@@ -8,7 +8,9 @@ import lombok.Getter;
 public enum Error {
 
     MAIL_CAN_NOT_BE_SENT("Mail can not be sent to the user"),
-    VERIFICATION_TOKEN_IS_NOT_VALID("Verification token is not valid");
+    VERIFICATION_TOKEN_IS_NOT_VALID("Verification token is not valid"),
+    USERNAME_ALREADY_EXISTS("Username already exists"),
+    EMAIL_ALREADY_EXISTS("Email already exists");
 
     private String message;
 }
