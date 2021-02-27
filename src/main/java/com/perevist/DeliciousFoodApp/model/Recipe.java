@@ -24,6 +24,7 @@ public class Recipe {
     @OneToMany
     @JoinColumn(name = "recipeId")
     private List<Comment> comments;
+    private String title;
     @Column(name = "image_url")
     private String imageUrl;
     private String content;

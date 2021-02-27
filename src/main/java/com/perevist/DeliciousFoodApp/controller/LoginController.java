@@ -2,7 +2,6 @@ package com.perevist.DeliciousFoodApp.controller;
 
 import com.perevist.DeliciousFoodApp.request.LoginRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,15 +14,5 @@ public class LoginController {
 
     @PostMapping("/login")
     public void login(@RequestBody @Valid LoginRequest loginRequest) {;
-    }
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello";
-    }
-
-    @GetMapping("/user")
-    public String user() {
-        return "User";
     }
 }

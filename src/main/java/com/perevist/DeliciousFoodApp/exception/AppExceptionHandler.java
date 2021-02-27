@@ -2,8 +2,8 @@ package com.perevist.DeliciousFoodApp.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class AppExceptionHandler {
@@ -22,6 +22,9 @@ public class AppExceptionHandler {
                 break;
             case VERIFICATION_TOKEN_IS_NOT_VALID:
             case USER_DOES_NOT_EXIST:
+            case CATEGORY_DOES_NOT_EXIST:
+            case RECIPE_DOES_NOT_EXIST:
+            case USER_CAN_NOT_DO_THIS_OPERATION:
                 httpStatus = HttpStatus.BAD_REQUEST;
                 break;
         }
