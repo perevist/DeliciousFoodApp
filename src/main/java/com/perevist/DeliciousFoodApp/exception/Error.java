@@ -14,7 +14,9 @@ public enum Error {
     USER_DOES_NOT_EXIST("User does not exist"),
     CATEGORY_DOES_NOT_EXIST("Recipe category does not exist"),
     RECIPE_DOES_NOT_EXIST("Recipe does not exist"),
-    USER_CAN_NOT_DO_THIS_OPERATION("User can not do this operation");
+    USER_CAN_NOT_DO_THIS_OPERATION("User can not do this operation"),
+    COMMENT_DOES_NOT_EXIST("Comment does not exist"),
+    COMMENT_DOES_NOT_BELONG_TO_THIS_RECIPE("Comment does not belong to this recipe");
 
     private String message;
 }

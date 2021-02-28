@@ -10,7 +10,7 @@ import java.util.List;
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     // Eliminate N+1 problem
-    @Query("SELECT r FROM Recipe r LEFT JOIN FETCH r.author LEFT JOIN FETCH r.recipeCategory")
+    @Query("SELECT DISTINCT r FROM Recipe r LEFT JOIN FETCH r.author LEFT JOIN FETCH r.recipeCategory")
     List<Recipe> findAllRecipes(Pageable pageable);
 
     boolean existsById(Long id);

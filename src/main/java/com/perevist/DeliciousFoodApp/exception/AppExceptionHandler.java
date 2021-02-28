@@ -25,6 +25,8 @@ public class AppExceptionHandler {
             case CATEGORY_DOES_NOT_EXIST:
             case RECIPE_DOES_NOT_EXIST:
             case USER_CAN_NOT_DO_THIS_OPERATION:
+            case COMMENT_DOES_NOT_EXIST:
+            case COMMENT_DOES_NOT_BELONG_TO_THIS_RECIPE:
                 httpStatus = HttpStatus.BAD_REQUEST;
                 break;
         }

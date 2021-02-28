@@ -4,8 +4,6 @@ import com.perevist.DeliciousFoodApp.request.RecipeDtoRequest;
 import com.perevist.DeliciousFoodApp.response.RecipeDtoResponse;
 import com.perevist.DeliciousFoodApp.service.interfaces.RecipeService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

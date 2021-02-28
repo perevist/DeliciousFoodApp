@@ -28,7 +28,7 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id"),
