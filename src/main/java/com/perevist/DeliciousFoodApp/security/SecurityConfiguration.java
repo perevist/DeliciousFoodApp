@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -42,8 +43,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
+                .antMatchers("/api/users/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/recipes").permitAll()
+                .antMatchers("/api/recipes").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/recipes/**/comments/**").permitAll()
+                .antMatchers("/api/recipes/**/comments/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/login").permitAll()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/registration/accountVerification/**").permitAll()
+                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/v2/api-docs").permitAll()
+                .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
