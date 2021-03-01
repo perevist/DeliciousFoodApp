@@ -16,7 +16,8 @@ public enum Error {
     RECIPE_DOES_NOT_EXIST("Recipe does not exist"),
     USER_CAN_NOT_DO_THIS_OPERATION("User can not do this operation"),
     COMMENT_DOES_NOT_EXIST("Comment does not exist"),
-    COMMENT_DOES_NOT_BELONG_TO_THIS_RECIPE("Comment does not belong to this recipe");
+    COMMENT_DOES_NOT_BELONG_TO_THIS_RECIPE("Comment does not belong to this recipe"),
+    CATEGORY_ALREADY_EXISTS("Recipe category already exists");
 
     private String message;
 }
