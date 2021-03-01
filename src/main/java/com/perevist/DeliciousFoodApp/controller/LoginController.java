@@ -13,6 +13,6 @@ import javax.validation.Valid;
 public class LoginController {
 
     @PostMapping("/login")
-    public void login(@RequestBody @Valid LoginRequest loginRequest) {;
+    public void login(@RequestBody @Valid LoginRequest loginRequest) {
     }
 }

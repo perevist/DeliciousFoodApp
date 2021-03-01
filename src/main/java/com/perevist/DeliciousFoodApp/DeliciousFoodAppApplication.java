@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class DeliciousFoodAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DeliciousFoodAppApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DeliciousFoodAppApplication.class, args);
+    }
 }

@@ -23,10 +23,10 @@ public class SwaggerConfiguration {
 
     @Bean
     public Docket swaggerApi() {
-        return new Docket(DocumentationType. SWAGGER_2 )
+        return new Docket(DocumentationType.SWAGGER_2)
                 .ignoredParameterTypes(UsernamePasswordAuthenticationToken.class)
                 .select()
-                .paths(PathSelectors.regex( "^(?!/(error).*$).*$" )) // Turn off basic-error-controller
+                .paths(PathSelectors.regex("^(?!/(error).*$).*$")) // Turn off basic-error-controller
                 .build()
                 .securitySchemes(singletonList(createSchema()))
                 .securityContexts(singletonList(createContext()));

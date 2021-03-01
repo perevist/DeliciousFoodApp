@@ -5,7 +5,7 @@ import com.perevist.DeliciousFoodApp.response.CommentDtoResponse;
 
 public class CommentMapper {
 
-    private CommentMapper(){
+    private CommentMapper() {
     }
 
     public static CommentDtoResponse mapCommentToCommentDtoResponse(Comment comment) {

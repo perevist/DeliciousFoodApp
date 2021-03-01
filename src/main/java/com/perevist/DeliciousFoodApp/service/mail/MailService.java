@@ -1,4 +1,4 @@
-package com.perevist.DeliciousFoodApp.mail;
+package com.perevist.DeliciousFoodApp.service.mail;
 
 import com.perevist.DeliciousFoodApp.exception.DeliciousFoodAppException;
 import com.perevist.DeliciousFoodApp.exception.Error;
@@ -30,7 +30,7 @@ public class MailService {
             messageHelper.setText(content);
         };
 
-        try{
+        try {
             mailSender.send(messagePreparator);
         } catch (MailException e) {
             System.out.println(e.getMessage());

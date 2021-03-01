@@ -2,7 +2,6 @@ package com.perevist.DeliciousFoodApp.service;
 
 import com.perevist.DeliciousFoodApp.exception.DeliciousFoodAppException;
 import com.perevist.DeliciousFoodApp.exception.Error;
-import com.perevist.DeliciousFoodApp.mail.MailService;
 import com.perevist.DeliciousFoodApp.model.Authority;
 import com.perevist.DeliciousFoodApp.model.User;
 import com.perevist.DeliciousFoodApp.model.VerificationToken;
@@ -11,6 +10,7 @@ import com.perevist.DeliciousFoodApp.repository.UserRepository;
 import com.perevist.DeliciousFoodApp.repository.VerificationTokenRepository;
 import com.perevist.DeliciousFoodApp.request.RegistrationRequest;
 import com.perevist.DeliciousFoodApp.service.interfaces.RegistrationService;
+import com.perevist.DeliciousFoodApp.service.mail.MailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -63,10 +63,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     private void validateIfUsernameAndEmailExist(String username, String email) {
-        if(userRepository.existsByUsername(username)) {
+        if (userRepository.existsByUsername(username)) {
             throw new DeliciousFoodAppException(Error.USERNAME_ALREADY_EXISTS);
         }
-        if(userRepository.existsByEmail(email)) {
+        if (userRepository.existsByEmail(email)) {
             throw new DeliciousFoodAppException(Error.EMAIL_ALREADY_EXISTS);
         }
     }
