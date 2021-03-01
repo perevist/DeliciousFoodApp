@@ -6,6 +6,7 @@ import com.perevist.DeliciousFoodApp.mapper.RecipeMapper;
 import com.perevist.DeliciousFoodApp.model.Recipe;
 import com.perevist.DeliciousFoodApp.model.RecipeCategory;
 import com.perevist.DeliciousFoodApp.model.User;
+import com.perevist.DeliciousFoodApp.repository.CommentRepository;
 import com.perevist.DeliciousFoodApp.repository.RecipeCategoryRepository;
 import com.perevist.DeliciousFoodApp.repository.RecipeRepository;
 import com.perevist.DeliciousFoodApp.repository.UserRepository;
@@ -34,6 +35,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository recipeRepository;
     private final RecipeCategoryRepository recipeCategoryRepository;
+    private final CommentRepository commentRepository;
     private final UserRepository userRepository;
     private final static int PAGE_SIZE = 3;
 
@@ -50,7 +52,7 @@ public class RecipeServiceImpl implements RecipeService {
     public RecipeDtoResponse addRecipe(RecipeDtoRequest recipeDtoRequest) {
         Recipe recipe = createRecipeFromRecipeDtoRequest(recipeDtoRequest);
         String loggedUser = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User author = userRepository.findByUsername(loggedUser)
+        User author = userRepository.findByUsernameWithoutAuthorities(loggedUser)
                 .orElseThrow(() -> new DeliciousFoodAppException(Error.USER_DOES_NOT_EXIST));
         recipe.setAuthor(author);
         return RecipeMapper.mapRecipeToRecipeDtoResponse(recipeRepository.save(recipe));
@@ -61,6 +63,7 @@ public class RecipeServiceImpl implements RecipeService {
     public void deleteRecipe(Long id) {
         Recipe recipe = getRecipeFromDb(id);
         verifyIfUserCanDoOperation(recipe);
+        commentRepository.deleteAllByRecipeId(id);
         recipeRepository.deleteById(id);
     }
 

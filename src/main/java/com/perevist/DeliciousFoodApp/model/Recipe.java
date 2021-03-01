@@ -20,9 +20,6 @@ public class Recipe {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private RecipeCategory recipeCategory;
-    @OneToMany
-    @JoinColumn(name = "recipeId")
-    private List<Comment> comments;
     private String title;
     @Column(name = "image_url")
     private String imageUrl;

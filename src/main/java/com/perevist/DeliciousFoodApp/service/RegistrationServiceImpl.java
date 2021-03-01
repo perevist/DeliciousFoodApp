@@ -37,6 +37,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private String applicationUrl;
 
     @Override
+    @Transactional
     public void registerUser(RegistrationRequest registrationRequest) {
         validateIfUsernameAndEmailExist(registrationRequest.getUsername(), registrationRequest.getEmail());
         User user = createUserFromRegistrationRequest(registrationRequest);
@@ -94,7 +95,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .append("Hello,\n\n")
                 .append("Welcome to the DeliciousFoodApp. Click on the below url to activate your account:\n")
                 .append(applicationUrl)
-                .append("/api/registration/accountVerification/")
+                .append("/registration/accountVerification/")
                 .append(verificationToken)
                 .toString();
         mailService.sendMail(subject, email, content);
